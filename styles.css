@@ -1,0 +1,33 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5rem;
+  height: 6vh;
+}
+
+.title{
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.dark-mode{
+  border: none;
+  background: white;
+  font-size: 1rem;
+}
+
+.dark-mode:hover{
+  cursor: pointer;
+}
+
+.gray-background{
+  background: rgba(236, 236, 236, .5);
+  height: 100vh;
+}
