@@ -39,8 +39,13 @@ const searchInput = document.createElement('input');
 searchInput.className= 'input-country';
 searchInput.placeholder = `Search for a country...`;
 
+const refreshButton = document.createElement('button');
+refreshButton.className = 'refresh'
+refreshButton.innerText = 'REFRESH'
+
 const dropdown = document.createElement('select');
 dropdown.className = 'dropdown';
+
 //drop options 
 let countryArr = ['Filter by Region', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
@@ -56,6 +61,7 @@ countryArr.forEach(country => {
 })
 
 searchInputContainer.append(searchInput);
+searchInputContainer.append(refreshButton);
 inputSelectContainer.append(searchInputContainer);
 inputSelectContainer.append(dropdown);
 

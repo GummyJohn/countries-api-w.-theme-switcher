@@ -59,9 +59,6 @@ body{
   border: none;
 }
 
-.search-img:hover{
-  cursor: pointer;
-}
 
 .dropdown{
   width: 150px;
@@ -113,10 +110,19 @@ body{
  height: 50%;
 }
 
-.country-title{
+.conutry-title{
   font-weight: bold;
   width: 100%;
   line-height: 2rem;
+}
+
+.refresh{
+  background: black;
+  color: white;
+}
+
+.refresh:hover{
+  cursor: pointer;
 }
 
 .hide{
