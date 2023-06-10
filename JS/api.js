@@ -3,6 +3,7 @@ const inputCountryText = document.querySelector('.input-country');
 const options = document.querySelectorAll('.options');
 const select = document.querySelector('.dropdown')
 const searchButton = document.querySelector('.search-img');
+const restartButton = document.querySelector('.refresh');
 
 function countryTitle(name, text){
   const title = document.createElement('h2')
@@ -58,14 +59,34 @@ window.addEventListener('load', () => {
       countriesDivDispay.append(singleDivs)
     }
 
-    return data;
+    const containers = document.querySelectorAll('.single-container')
+    
+    return containers;
+  })
+  .then(containers => {
+    inputCountryText.addEventListener('keypress', () => {
+      if(event.keyCode === 13){
+        for(let i = 0; i < containers.length; i++){
+          let text = inputCountryText.value.toLowerCase();
+    
+          if(!(containers[i].innerText.toLowerCase().includes(text))){
+            containers[i].classList.add('hide');
+          }
+        }
+  
+        inputCountryText.value = '';
+      }
+    })
+
+    refreshButton.addEventListener('click', () => {
+      for(let i = 0; i < containers.length; i++){
+        containers[i].classList.remove('hide');
+      }
+    })
   })
   .catch(err => {
     console.log('Error' ,err)
   })
 })
 
-// console.log(fetchDataAll());
-// console.log(fetchDataName('eesti'));
-// console.log(fetchDataRegion('europe'));
 
