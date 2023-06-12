@@ -59,12 +59,16 @@ body{
   border: none;
 }
 
-
+/* dropdown option */
 .dropdown{
-  width: 150px;
-  padding: .7rem ; 
+  width: 200px;
+  padding: 1rem;
+  cursor: pointer;
 }
 
+.options{
+  padding: .5rem;
+}
 .countries-divs-container{
   margin-top: 2.5rem;
   padding: 2rem 2rem;
@@ -73,7 +77,6 @@ body{
   grid-gap: 2rem;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid black; */
   background :rgba(236, 236, 236, .5);
   margin-top: 0;
 }
@@ -85,8 +88,15 @@ body{
   line-height: .5rem;
   padding-left: 1rem;
   background: white;
-  margin-top: -5px;
   height: 100%;
+}
+
+.conutry-content::before{
+  background: white
+}
+
+.conutry-content::after{
+  background: black;
 }
 
 .single-container{
@@ -101,14 +111,13 @@ body{
   font-size: .9rem;
 }
 
-.flag-img img{
+.flag-img{
   width: 100%;
   height: 100%;
+  height: 50%;
 }
 
-.flag-img{
- height: 50%;
-}
+
 
 .conutry-title{
   font-weight: bold;
@@ -128,3 +137,19 @@ body{
 .hide{
   display: none;
 }
+
+.dark-theme{
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.gray{
+  background: rgb(85, 83, 83);
+  color: white;
+}
+
+.black{
+  background: black;
+  color: white;
+}
+

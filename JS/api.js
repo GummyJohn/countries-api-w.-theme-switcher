@@ -1,28 +1,16 @@
 const countriesDivDispay = document.querySelector('.countries-divs-container');
-const inputCountryText = document.querySelector('.input-country');
-const options = document.querySelectorAll('.options');
-const select = document.querySelector('.dropdown')
-const searchButton = document.querySelector('.search-img');
 const restartButton = document.querySelector('.refresh');
-
-function countryTitle(name, text){
-  const title = document.createElement('h2')
-  title.className = name;
-  title.innerText = text
-
-  return title;
-}
+const inputCountryText = document.querySelector('.input-country');
+const options = document.querySelectorAll('option');
+const select = document.querySelector('.dropdown');
+const darkMode = document.querySelector('.dark-mode');
+const searchimg = document.querySelector('.search-img');
+const searchBackground = document.querySelector('.input-dropdown');
+// select.setAttribute('onchange', 'regionFilter()')
+// console.log(select);
 
 async function fetchDataAll(){
   const response = await fetch('https://restcountries.com/v3.1/all');
-  
-  const data = await response.json();
-  
-  return data;
-}
-
-async function fetchDataName(text){
-  const response = await fetch(`https://restcountries.com/v3.1/name/${text}`)
   
   const data = await response.json();
   
@@ -37,30 +25,27 @@ async function fetchDataRegion(text){
   return data;
 }
 
-
 window.addEventListener('load', () => {
    fetchDataAll()
   .then(data => {
     for(let i = 0; i < data.length; i++){
       const singleDivs = divCreate('single-container')
-      const flagImg = divCreate('flag-img')
-      const countryContent = divCreate('conutry-content')
-            
-      singleDivs.prepend(flagImg);
-      singleDivs.append(countryContent);
-      
-      flagImg.innerHTML = `<img src='${data[i].flags.png}' alt='${data[i].flags.alt}'>`
-
-      countryContent.append(countryTitle('conutry-title', `${data[i].name.common}`))
-      countryContent.append(PCreate('population stats', `Population: ${data[i].population}`))
-      countryContent.append(PCreate('region stats', `Region: ${data[i].region}`))
-      countryContent.append(PCreate('captial stats', `Captial: ${data[i].capital}`))
+      singleDivs.innerHTML=`
+        <img src ='${data[i].flags.png}' alt ='${data[i].flags.alt}' class='flag-img'>
+        
+        <div class='conutry-content'>
+          <h2 class= 'conutry-title'>${data[i].name.common}</h2>
+          
+          <p class='population stats'>Population: ${data[i].population}</p>
+          <p class='region stats'>Region: ${data[i].region}</p>
+          <p class='captial stats'>Captial: ${data[i].capital}</p>         
+        </div>
+      `
 
       countriesDivDispay.append(singleDivs)
     }
 
     const containers = document.querySelectorAll('.single-container')
-    
     return containers;
   })
   .then(containers => {
@@ -83,10 +68,33 @@ window.addEventListener('load', () => {
         containers[i].classList.remove('hide');
       }
     })
+
+    const allContents = document.querySelectorAll('.conutry-content')
+    return allContents
+  })
+  .then(contents => { 
+    darkMode.addEventListener('click', () => {
+      body.classList.toggle('black');
+      searchimg .classList.toggle('dark-theme');
+      searchBackground.classList.toggle('dark-theme');
+      countriesDivDispay.classList.toggle('dark-theme');
+      darkMode.classList.toggle('dark-theme');
+     
+      contents.forEach(contain => contain.classList.toggle('gray'))
+    })
   })
   .catch(err => {
     console.log('Error' ,err)
   })
 })
 
+
+
+// async function fetchDataName(text){
+//   const response = await fetch(`https://restcountries.com/v3.1/name/${text}`)
+  
+//   const data = await response.json();
+  
+//   return data;
+// }
 

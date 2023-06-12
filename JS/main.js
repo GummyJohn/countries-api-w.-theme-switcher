@@ -13,13 +13,29 @@ function PCreate(name, text){
   return p;
 }
 
+function countryTitle(name, text){
+  const title = document.createElement('h2')
+  title.className = name;
+  title.innerText = text
+
+  return title;
+}
+
+function button(name, text){
+  const button = document.createElement('button');
+  button.className = name;
+  button.innerText = text;
+
+  return button
+}
+
+
 const body = document.querySelector('body');
 
 const header = divCreate('header');
 
-const darkModeBtn = document.createElement('button');
-darkModeBtn.className = 'dark-mode'
-darkModeBtn.innerHTML = `<span class='moon'><i class="fa-regular fa-moon"></i></span> Dark Mode`
+const darkModeBtn = button('dark-mode', '');
+darkModeBtn.innerHTML = `<span class='moon'><i class="fa-regular fa-moon"></i></span> Dark Mode`;
 
 header.append(PCreate('title', 'Where in the World?'))
 header.append(darkModeBtn);
@@ -46,19 +62,22 @@ refreshButton.innerText = 'REFRESH'
 const dropdown = document.createElement('select');
 dropdown.className = 'dropdown';
 
+const firstOption = document.createElement('option');
+firstOption.innerText = 'Filter by Region'
+
+dropdown.prepend(firstOption);
+
 //drop options 
-let countryArr = ['Filter by Region', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+let countryArr = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
-countryArr.forEach(country => {
+for(let i = 0; i < countryArr.length; i++){
   const option = document.createElement('option');
-  const opButton = document.createElement('button');
-  opButton.className = 'options'
-  option.value = country;
-  opButton.innerText = country;
-  option.append(opButton);
-
+  option.innerText = countryArr[i];
+  option.value = countryArr[i];
+  
   dropdown.append(option)
-})
+}
+
 
 searchInputContainer.append(searchInput);
 searchInputContainer.append(refreshButton);
@@ -72,3 +91,24 @@ const countriesDivContainer = divCreate('countries-divs-container');
 body.append(countriesDivContainer)
 
 
+
+// const searchInput = document.createElement('input');
+// searchInput.className= 'input-country';
+// searchInput.placeholder = `Search for a country...`;
+// const refreshButton = button('refresh', 'REFRESH');
+
+// const dropdown = divCreate('dropdown');
+// const inputDropDown = document.createElement('input');
+// inputDropDown.className = 'textbox'
+// inputDropDown.placeholder = 'Filter by Region';
+// inputDropDown.setAttribute('readonly', '');
+
+// const choiceContainer = divCreate('button-option hide')
+// choiceContainer.append(button('choice', 'Africa'))
+// choiceContainer.append(button('choice', 'America'))
+// choiceContainer.append(button('choice', 'Asia'))
+// choiceContainer.append(button('choice', 'Europe'))
+// choiceContainer.append(button('choice', 'Oceania'))
+
+// dropdown.append(inputDropDown)
+// dropdown.append(choiceContainer)
