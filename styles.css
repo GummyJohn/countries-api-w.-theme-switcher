@@ -61,14 +61,36 @@ body{
 
 /* dropdown option */
 .dropdown{
-  width: 200px;
+  width: 150px;
+  cursor: pointer;
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: .5rem;
+}
+
+.button-option{
+  position: absolute;
+  top: 101%;
+  left: -.5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.choice{
+  border: none;
   padding: 1rem;
+}
+
+.choice:hover{
+  background:rgb(212, 210, 210);
   cursor: pointer;
 }
 
-.options{
-  padding: .5rem;
-}
 .countries-divs-container{
   margin-top: 2.5rem;
   padding: 2rem 2rem;
@@ -81,7 +103,7 @@ body{
   margin-top: 0;
 }
 
-.conutry-content{
+.country-content{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -89,14 +111,6 @@ body{
   padding-left: 1rem;
   background: white;
   height: 100%;
-}
-
-.conutry-content::before{
-  background: white
-}
-
-.conutry-content::after{
-  background: black;
 }
 
 .single-container{
@@ -117,9 +131,7 @@ body{
   height: 50%;
 }
 
-
-
-.conutry-title{
+.country-title{
   font-weight: bold;
   width: 100%;
   line-height: 2rem;
@@ -134,9 +146,6 @@ body{
   cursor: pointer;
 }
 
-.hide{
-  display: none;
-}
 
 .dark-theme{
   background: rgba(0, 0, 0, 0.7);
@@ -153,3 +162,6 @@ body{
   color: white;
 }
 
+.hide{
+  display: none;
+}
