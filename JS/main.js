@@ -1,9 +1,16 @@
 import { fetchDataAll } from "./api.js"
 import {
-  divCreate,
-  body
+  createHeader,
+  createSearchDropdown,
+  createSingleBox,
+  createDivDisplay
 } from "./component.js"
 
+const body = document.querySelector('body');
+
+body.append(createHeader())
+body.append(createSearchDropdown())
+body.append(createDivDisplay())
 
 const countriesDivDispay = document.querySelector('.countries-divs-container');
 const inputCountryText = document.querySelector('.input-country');
@@ -14,22 +21,6 @@ const searchBackground = document.querySelector('.input-dropdown');
 const options = document.querySelectorAll('option');
 const select = document.querySelector('.dropdown');
 
-
-function createSingleBox({flags, population, region, capital, name}){
-  const singleDivs = divCreate('single-container')
-  singleDivs.innerHTML=`
-    <img src ='${flags.png}' alt ='${flags.alt}' class='flag-img'>
-    
-    <div class='country-content'>
-      <h2 class= 'country-title'>${name.common}</h2>
-      
-      <p class='population stats'>Population: ${population}</p>
-      <p class='region stats'>Region: ${region}</p>
-      <p class='captial stats'>Captial: ${capital}</p>         
-    </div>
-  `
-  return singleDivs;
-}
 
 async function data(){
   const allCountries = await fetchDataAll();
@@ -53,6 +44,7 @@ async function data(){
     })
 
   })
+
 
   select.addEventListener('change', (e) => {
     let region = e.target.value.toLowerCase();
@@ -85,4 +77,3 @@ async function data(){
 }
 
 data();
-
